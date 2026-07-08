@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Perspective</title>
+<meta name="description" content="Get in touch with Perspective — submissions, corrections and feedback.">
+<link rel="icon" href="assets/logo.png" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script defer src="js/script.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="30" height="30">
+          <rect width="64" height="64" rx="14" fill="var(--ink)"/>
+          <path d="M14 44 L26 30 L36 38 L50 20" stroke="var(--forest)" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="50" cy="20" r="3.4" fill="var(--brass)"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <strong>Perspective</strong>
+        <span>Economics &amp; Policy</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="opinions/index.html">Opinions</a>
+      <a href="research.html">Research</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+      <button class="theme-toggle" type="button" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.5 12H2M22 12h-2.5M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7" stroke-linecap="round"/></svg>
+        <span class="theme-toggle__label">Dark mode</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <div class="container">
+    <p class="eyebrow reveal is-visible">Contact</p>
+    <h1 class="page-title reveal is-visible" style="margin-top:14px;">Get in touch</h1>
+    <p class="page-intro reveal is-visible">
+      Corrections, submissions, feedback on a paper, or story ideas.
+    </p>
+
+    <section class="section">
+      <div class="split">
+        <div class="card pad reveal">
+          <h2 class="section-title" style="font-size:1.7rem;">Send a message</h2>
+          <p style="color:var(--ink-soft); margin-top:10px;">This is a placeholder. It is not yet functional.
+
+          <form class="stack" style="margin-top:20px;" data-contact-form>
+            <input type="text" placeholder="Your name" required aria-label="Your name">
+            <input type="email" placeholder="Your email" required aria-label="Your email">
+            <textarea placeholder="Your message" required aria-label="Your message"></textarea>
+            <button class="btn" type="submit" style="align-self:flex-start;">Send message</button>
+            <p data-contact-note class="mono" style="font-size:.82rem; color:var(--ink-faint); margin:0;"></p>
+          </form>
+        </div>
+
+        <div class="stack">
+          <div class="callout reveal">
+            <h2 class="section-title" style="font-size:1.5rem;">What to send</h2>
+            <p style="color:var(--ink-soft); margin-top:12px;">
+              Corrections, feedback on a working paper, suggestions for future research, essay pitches,
+              or anything else related to the publication.
+            </p>
+            <div class="cta-row" style="margin-top:18px;">
+              <a class="btn secondary" href="research.html">Research</a>
+              <a class="btn secondary" href="opinions/index.html">Opinions</a>
+            </div>
+          </div>
+
+          <div class="card pad reveal">
+            <p class="eyebrow">Elsewhere</p>
+            <p style="color:var(--ink-soft); margin-top:10px; font-size:.94rem;">Social links, ready to connect. (also a placeholder and do not yet work)</p>
+            <div class="social-row" style="margin-top:14px;">
+              <a href="#" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3l7.6 10.2L3.3 21H6l6-6.5L17 21h4l-8-10.7L20.4 3H18l-5.6 6L8 3H3z"/></svg></a>
+              <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21H18v-5.3c0-1.27-.02-2.9-1.77-2.9-1.78 0-2.05 1.39-2.05 2.82V21H10V9z"/></svg></a>
+              <a href="#" aria-label="RSS"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5.5" cy="18.5" r="2"/><path d="M4 11a9 9 0 019 9h-2.4A6.6 6.6 0 004 13.4V11zM4 5a15 15 0 0115 15h-2.6A12.4 12.4 0 004 7.6V5z"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h5>Perspective</h5>
+        <p style="color:var(--ink-soft); max-width:32ch; font-size:.92rem; margin:0;">Independent writing on markets, growth and the economics of the world.</p>
+        <div class="social-row" style="margin-top:16px;">
+          <a href="#" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3l7.6 10.2L3.3 21H6l6-6.5L17 21h4l-8-10.7L20.4 3H18l-5.6 6L8 3H3z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21H18v-5.3c0-1.27-.02-2.9-1.77-2.9-1.78 0-2.05 1.39-2.05 2.82V21H10V9z"/></svg></a>
+          <a href="#" aria-label="RSS"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5.5" cy="18.5" r="2"/><path d="M4 11a9 9 0 019 9h-2.4A6.6 6.6 0 004 13.4V11zM4 5a15 15 0 0115 15h-2.6A12.4 12.4 0 004 7.6V5z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Read</h5>
+        <ul>
+          <li><a href="opinions/index.html">Opinions</a></li>
+          <li><a href="research.html">Research</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Site</h5>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Newsletter</h5>
+        <p style="color:var(--ink-soft); font-size:.9rem; margin:0;">One email when a new paper or essay is published.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Perspective</span>
+      <span>Joe Harding</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+
