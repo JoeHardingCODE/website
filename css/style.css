@@ -582,4 +582,17 @@ textarea{ min-height:150px; resize:vertical; }
   .card.pad, .article-card, .paper-block, .newsletter, .level, .callout{ padding:20px; }
   .section{ padding:24px 0; }
   .paper-actions{ min-width:0; }
+
+   .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
+}
 }
