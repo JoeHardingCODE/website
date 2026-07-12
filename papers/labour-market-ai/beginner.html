@@ -3,41 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perspective — Economics &amp; Policy</title>
-<meta name="description" content="Perspective publishes working papers and essays on labour markets, growth and the economics of artificial intelligence.">
-<link rel="icon" href="assets/logo.png" type="image/png+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Advanced | Labour Market Matching Efficiency in the Age of AI</title>
+<meta name="description" content="The full technical treatment — model setup, assumptions, and open lines of criticism.">
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<script defer src="js/script.js"></script>
+<link rel="stylesheet" href="../../css/style.css">
+<script defer src="../../js/script.js"></script>
 </head>
 <body>
 
+<div class="progress-rail" aria-hidden="true"><div class="progress-rail__fill"></div></div>
+
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="index.html">
-     <a class="brand" href="index.html">
-    <span class="brand-mark">
-        <img src="assets/icons/logo.png"
-             alt="Perspective logo"
-             class="brand-logo">
-    </span>
-
-    <span class="brand-text">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="30" height="30">
+          <rect width="64" height="64" rx="14" fill="var(--ink)"/>
+          <path d="M14 44 L26 30 L36 38 L50 20" stroke="var(--forest)" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="50" cy="20" r="3.4" fill="var(--brass)"/>
+        </svg>
+      </span>
+      <span class="brand-text">
         <strong>Perspective</strong>
         <span>Economics &amp; Policy</span>
-    </span>
-</a>
       </span>
+    </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" class="site-nav">
-      <a href="index.html" >Home</a>
-      <a href="opinions/index.html">Opinions</a>
-      <a href="research.html" aria-current="page">Research</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="../../index.html">Home</a>
+      <a href="../../opinions/index.html">Opinions</a>
+      <a href="../../research.html" aria-current="page">Research</a>
+      <a href="../../about.html">About</a>
+      <a href="../../contact.html">Contact</a>
       <button class="theme-toggle" type="button" aria-pressed="false">
-        <png viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.5 12H2M22 12h-2.5M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7" stroke-linecap="round"/></png>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.5 12H2M22 12h-2.5M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7" stroke-linecap="round"/></svg>
         <span class="theme-toggle__label">Dark mode</span>
       </button>
     </nav>
@@ -46,52 +46,51 @@
 
 <main>
   <div class="container-narrow article-header reveal is-visible">
-    <p class="eyebrow">01 — Beginner</p>
+    <p class="eyebrow">03 — Advanced</p>
     <h1>Labour Market Matching Efficiency in the Age of AI</h1>
-    <p style="color:var(--ink-soft); margin-top:14px; font-size:1.05rem;">A plain-language version of Working Paper No. 001.</p>
+    <p style="color:var(--ink-soft); margin-top:14px; font-size:1.05rem;">The full technical treatment — model setup, assumptions, and the case for and against the paper's conclusions.</p>
     <div class="article-byline">
-      <span>Perspective</span><span>·</span><span>2026</span><span>·</span><span>5 min read</span>
+      <span>Perspective</span><span>·</span><span>2026</span><span>·</span><span>16 min read</span>
     </div>
   </div>
 
   <article class="container-narrow prose section reveal">
-    <h2>What is the paper about?</h2>
+    <h2>Framing the problem in search-and-match terms</h2>
     <p>
-      This paper looks at the labour market for the professional services and the increasing adoption of AI within the recruitment process. It deploys a simple search and matching model, as developed from Diamond-Mortenson-Pissarides, and uses a simple mathematical toolkit (and a little bit of game theory) to determine its impact on equlibrium.
+      This paper uses the standard Diamond-Mortensen-Pissarides (DMP) model of search and matching where employment is produced via a stochastic matching mechanism, rather than instant market clearing. The basic idea of the model is based on a Cobb-Douglas matching function. Instead of modelling AI as an exogenous technology shock to productivity, the paper considers the effects of AI as structural shocks affecting the labour market through six channels: efficiency, application congestion, screening precision, substitution of tasks, recruiting costs, and bargaining-matching wedge. Thus, AI may affect labour market outcomes either through changing the efficiency coefficient of the matching function or the incentives for creating vacancies and wage setting. As a result, this paper considers two types of effects of AI on the labour market: first order effects on observable variables like vacancies, unemployment, and wages, and second order effects on sociatal efficiency. However, only the change in the relation between the bargaining power of the workers and the elasticity of the matching function (Hosios condition) is able to determine the effect of AI on the proximity of the labour market equilibrium to the socially optimal one.
 
     </p>
 
-    <h2>Why does it matter?</h2>
+    <h2>Chanels of effect</h2>
     <p>
-    Unemployment and underemployment are costly for workers, firms and society. They are unable to consume as much as they would like, slowing the flow of funds around the economy and depressing growth. With unemployment firms are unable to fill vacancies, which reduces their productivity and output. Better matching can reduce unemployment, improve productivity, and help workers find roles that match their skillset. 
+      The paper highlights six channels whereby AI can affect labour market outcomes under the search-and-matching model. Targeting efficiency increases the accuracy of workers and firms in finding a match, thereby facilitating a successful hire. Application congestion has the opposite effect because generative AI allows candidates to apply to too many jobs and makes it difficult for firms to identify good candidates. Screening accuracy is whether AI recruitment technology improves the selection process or rejects potential candidates using algorithms wrongly. Task substitution is the substitution of AI for routine tasks, which results in lower labour demand for some occupations, especially entry-level professionals. Recruiting cost decreases as AI technology takes over the hiring process and encourages firms to make more hires by reducing costs. Finally, the bargaining-matching wedge is whether AI alters the connection between the bargaining power of workers and the elasticity of the matching function. According to the paper, whereas the above channels account for changes in unemployment, vacancies, wages, and labour market tightness, only the bargaining-matching wedge accounts for the shift towards or away from socially efficient equilibrium.          </p>
+
     </p>
 
-    <h2>Where AI fits in</h2>
+    <h2>Where the model's optimism breaks down</h2>
     <p>
-    The involvement of artificial intelligence in the hiring process is associated with its ability to serve as a intermediary for linking together potential employers and workers. Organizations employ applicant tracking systems and automated interviews to help sorting and ranking applicants, while job seekers are increasingly using artificial intelligence to write and customize their resumes. Thus, the "matching process" in question gets changed because it involves the reduction of some search costs and the increase in screening efficiency; however, it results in such drawbacks as an immense number of applicants and the dismissal of suitable candidates due to the absence of matching key words in their resumes. 
-    To put it simply, AI becomes involved in the hiring process at almost any stage from sourcing candidates to conducting interviews and making decisions about moving on with the applicants.
+      The paper is deliberately cautious about three complications that a simple version of the model would miss. The first is composition effects: if AI-driven screening systematically filters out certain types of candidates, because of biased training data, proxy variables correlated with protected characteristics, or narrow keyword matching, the observed matching rate can rise even as the quality or fairness of matches falls, since rejected candidates simply don't show up as "failed matches" in the data. The second is adoption heterogeneity: firms and workers who adopt AI tools earlier or more fully capture disproportionate gains, which can widen dispersion in employment outcomes even while aggregate matching efficiency improves. The third is a strategic response problem: as candidates learn what automated screens reward, search and application behaviour adapts, sometimes in ways that make screening less informative over time, a dynamic familiar from other domains where an automated filter becomes a target to be gamed rather than a neutral measurement.
     </p>
 
-    <h2>The catch</h2>
+    <h2>The Frictions</h2>
     <p>
-      The same tools can also introduce new problems: biased screening, over-reliance on automated
-      filters that reject good candidates for the wrong reasons, or an advantage for firms and workers
-      who can afford the best AI tools while others fall behind. AI does not automatically make matching
-      better, it changes the shape of the problem.
+      In this paper, the author states that even though AI is expected to help enhance matching efficiency, there are certain **frictions in the labour market** that will counterbalance these benefits. Application congestion is considered the most important one, where AI will allow applicants to send numerous applications to employers, thus making recruitment less effective because of increased search costs for firms. The next friction is **screening errors** because, with the help of AI applicant-tracking systems, firms may turn down capable applicants due to the strictness of keyword matching or incomplete evaluation of their skills and therefore preventing productive matches. Adjustment frictions are also likely to occur as workers who were replaced by AI will not be able to move to another occupation because of the difficulties in transferring skills or the impact of employment gap on future hiring opportunities. Task substitution may also affect the demand for lower-skilled labour before the creation of a new task and thus cause temporary unemployment. According to Harding, all these factors show that the productivity increase from using AI does not lead to an increase in the efficiency of the labour market. Instead, it may harm the matching process and therefore prolong unemployment.          </p>
+
     </p>
 
-    <h2>Main takeaway</h2>
+    <h2>Crtiticisms and Reading the Conclusion</h2>
     <p>
-      However, while AI can make recruiting faster and more efficient due to better candidate search, automatic selection, and cheaper hiring, it may cause additional issues like inundation of employers with AI-driven applications or wrong elimination of potential candidates because of too strict selection algorithms. The main idea presented in the paper is that all these changes influence hiring results like vacancy numbers, wages, and unemployment but they do not automatically lead to the improvement of the labor market. What matters is whether the introduction of AI into recruiting shifts the power balance between employers and workers, which needs further investigation.           
-     </p>
+      A fair reading of the paper should note what it does not resolve. It does not offer a causal estimate of AI's effect on matching efficiency from real-world data, it works through the mechanisms theoretically and flags where empirical work would need to go. It also does not take a strong position on the magnitude of the composition and adoption-heterogeneity problems relative to the efficiency gains, which is arguably the question that matters most for policy. Readers who find the optimistic channels more persuasive than the downside risks, or vice versa, are making a judgement the paper itself declines to make on their behalf, deliberately, since the evidence base for firm conclusions here is still thin.
+      The paper ends by stating that AI is radically transforming the process of recruitment, but there needs to be a differentiation between the effect of AI on labour market efficiency and hiring outcomes. Harding posits that AI does affect unemployment, vacancies, wages, and recruiting cost via mechanisms including targeting, congestion, screening effectiveness, substitution of tasks and reduced recruiting cost. However, these are first order effects and are not responsible for determining if the labour market is made efficient. Efficiency depends on whether the use of AI has any effect on the balance between the negotiating power of the workers and the elasticity of the matching function, the bargaining-matching wedge represented by the Hosios condition. Therefore, the paper concludes that there is insufficient evidence to determine if the effect of AI results in the socially efficient market or inefficient market despite clear effects on recruiting. It means that the future research should include not just identification of the effects of AI on hiring outcomes, but also on the effect of AI on making the labour market efficient or inefficient.          </p>
+
     </p>
 
     <div class="index-rule" style="margin-top:36px;"></div>
 
     <div class="cta-row" style="margin-top:10px;">
-      <a class="btn" href="intermediate.html">Continue to Intermediate →</a>
-      <a class="btn secondary" href="paper.pdf" target="_blank" rel="noopener">Open PDF</a>
+      <a class="btn" href="paper.pdf" target="_blank" rel="noopener">Open the full PDF</a>
       <a class="btn secondary" href="index.html">Back to paper page</a>
+      <a class="btn secondary" href="beginner.html">Start from Beginner</a>
     </div>
   </article>
 </main>
@@ -107,3 +106,4 @@
 
 </body>
 </html>
+
