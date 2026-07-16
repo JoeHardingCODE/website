@@ -1,87 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beginner | Labour Market Matching Efficiency in the Age of AI</title>
-  <link rel="stylesheet" href="../../style.css">
-  <script defer src="../../script.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beginner | Labour Market Matching Efficiency in the Age of AI</title>
+<meta name="description" content="A plain-language explanation of the paper — no economics background required.">
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<script defer src="../../js/script.js"></script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="../../index.html">
+
+<div class="progress-rail" aria-hidden="true"><div class="progress-rail__fill"></div></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="30" height="30">
+          <rect width="64" height="64" rx="14" fill="var(--ink)"/>
+          <path d="M14 44 L26 30 L36 38 L50 20" stroke="var(--forest)" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="50" cy="20" r="3.4" fill="var(--brass)"/>
+        </svg>
+      </span>
+      <span class="brand-text">
         <strong>Perspective</strong>
-        <span>Economics • Politics • Research</span>
-      </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav id="site-nav" class="site-nav">
-        <a href="../../index.html">Home</a>
-        <a href="../../academic.html" aria-current="page">Academic</a>
-        <a href="../../opinions.html">Opinions</a>
-        <a href="../../about.html">About</a>
-        <a href="../../contact.html">Contact</a>
-      </nav>
+        <span>Economics &amp; Policy</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../opinions/index.html">Opinions</a>
+      <a href="../../research.html" aria-current="page">Research</a>
+      <a href="../../about.html">About</a>
+      <a href="../../contact.html">Contact</a>
+      <button class="theme-toggle" type="button" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.5 12H2M22 12h-2.5M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7" stroke-linecap="round"/></svg>
+        <span class="theme-toggle__label">Dark mode</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container-narrow article-header reveal is-visible">
+    <p class="eyebrow">01 — Beginner</p>
+    <h1>Labour Market Matching Efficiency in the Age of AI</h1>
+    <p style="color:var(--ink-soft); margin-top:14px; font-size:1.05rem;">The same paper stripped of all jargon. No economics background needed.</p>
+    <div class="article-byline">
+      <span>Perspective</span><span>·</span><span>2026</span><span>·</span><span>5 min read</span>
     </div>
-  </header>
+  </div>
 
-  <main class="page">
-    <div class="container">
-      <div class="card pad">
-        <p class="kicker" style="color:#1d4ed8;">Beginner · No prior economics knowledge</p>
-        <h1 class="page-title">Labour Market Matching Efficiency in the Age of AI</h1>
-        <p class="page-intro">
-          A plain-language version of the paper.
-        </p>
-      </div>
+  <article class="container-narrow prose section reveal">
+    <h2>What does "matching efficiency" mean</h2>
+     <p> 
+     Think of a 'dating app' style of environment. There are two sets of elegable batchelor, the umemployed jobseeker and the firm that is looking to fill their vaccancy. Matching efficeincy is the speed and smoothness for which these groups are matched together.
+     </p>
+     <p>
+      When the efficiency is deemed to be high, this process is fast and roles can be filled easily. When efficency is low, this process becomes more difficult.
+     </p>
+    <h2>Where AI enters the labour market</h2>
+    <p>
+  AI usage occurs on both sides of the labour market. Generative AI is used on behalf of the jobseeker to tailor CV and cover letters within seconds, enabling them to apply to many more jobs in any one sitting. It is used by the hirer to screen candidates, conducting intial automated interviews to cut down the applicant before a human ever gets involved.
+    </p>
+    <p> 
+      On both sides of the market it has reduced the cost of searching and matching, which changes the dynamic of the labour market. Those are more inclined to apply for work outside their area of expertise and above their own level (few ever apply below thier own level) so the signal of skill that the application provides the firm is much weaker. Which may explain why the hiring process has become more drawn-out in recent years.
+    </p>
+     <h2>Failures of AI in the Labou Market</h2>
+  
+     <p>
+    The first is a flood of applications. Generative AI makes it easy to write a tailored CV and cover letter in seconds. That helps any individual job-seeker, but when huge numbers of people do it at once, employers can end up buried in applications, which makes it harder, not easier, for them to find the candidates who are actually a good fit. Reasearch has showed that with volume, ther agents become less accurate with their skills inference and may reject the most capable candiadates.
+    </p>
+    <p>
+      The second is automatic screening. Many companies now use software that filters applications before a person ever reads them. If that software rejects people for missing a particular keyword, or for having a gap in their work history, it can screen out candidates who would have done the job well.
+    </p>
+    <p>
+      The third is that the AI effects may be concentrated highly at the junior level. Routine, entry-level tasks are exactly the kind of work AI is best at taking overm, since human reasoning in these areas is much lower than the more senior postitions. So this could shrink the number of first-rung jobs available to people just starting out, creating some sort of diamond seniority structure, that may cause issues further down the line.
+    </p>
+    <p>
+      The fourth is that it affects workers bargaining power. If AI makes it less costly for a company to keep searching for candidates, it has less reason to make any one candidate a strong offer, since it can keep looking and find an individual willing to accept the lower offer. Over time, that could leave workers with less room to negotiate on pay.
+    </p>
+    <h2>The Conclusion</h2>
+    <p>
+     Without emprical evidence the paper is careful not to draw any unsubstantiated conclusions and acts more as thought experiment rather than a detailed peice of research. It does say, however, that AI pulls in both directions at once, and which effect dominates depends on how the tools are built and who gets to use them. Screening that's more transparent about why someone was rejected, and matching tools that are widely available rather than benefiting only the firms or workers who already have the resources to use them well, would make the optimistic story much more convincing.
+    </p>
 
-      <section class="section">
-        <div class="grid-2">
-          <div class="card pad">
-            <h2 class="section-title" style="font-size:2rem;">What is the paper about?</h2>
-            <p class="copy" style="margin-top:14px;">
-              The paper is about how well workers and jobs are matched to each other, and whether AI makes that process better or worse.
-            </p>
-          </div>
+    <div class="index-rule" style="margin-top:36px;"></div>
 
-          <div class="card pad">
-            <h2 class="section-title" style="font-size:2rem;">Why does it matter?</h2>
-            <p class="copy" style="margin-top:14px;">
-              Better matching can reduce unemployment, improve productivity, and help workers find roles that fit their skills more closely.
-            </p>
-          </div>
-
-          <div class="card pad">
-            <h2 class="section-title" style="font-size:2rem;">Where AI fits in</h2>
-            <p class="copy" style="margin-top:14px;">
-              AI can improve search, filtering, screening, and sorting, which may help workers and firms find each other faster and more accurately.
-            </p>
-          </div>
-
-          <div class="card pad">
-            <h2 class="section-title" style="font-size:2rem;">Main takeaway</h2>
-            <p class="copy" style="margin-top:14px;">
-              The effect of AI depends on whether it reduces frictions in the labour market faster than it creates new ones.
-            </p>
-          </div>
-        </div>
-
-        <div class="cta-row" style="margin-top:18px;">
-          <a class="btn" href="intermediate.html">Go to Intermediate</a>
-          <a class="btn secondary" href="advanced.html">Go to Advanced</a>
-          <a class="btn secondary" href="paper.pdf" target="_blank" rel="noopener">Open PDF</a>
-          <a class="btn secondary" href="index.html">Back to paper page</a>
-        </div>
-      </section>
+    <div class="cta-row" style="margin-top:10px;">
+      <a class="btn" href="intermediate.html">Continue to Intermediate →</a>
+      <a class="btn secondary" href="paper.pdf" target="_blank" rel="noopener">Open PDF</a>
+      <a class="btn secondary" href="index.html">Back to paper page</a>
     </div>
-  </main>
+  </article>
+</main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:1px solid var(--line); padding-top:20px;">
       <span>© 2026 Perspective</span>
       <span>Labour Market Matching Efficiency in the Age of AI</span>
     </div>
-  </footer>
+  </div>
+</footer>
+
 </body>
 </html>
 
