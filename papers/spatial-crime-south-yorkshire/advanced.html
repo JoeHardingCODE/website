@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced | Spatial Clustering of Crime in South Yorkshire</title>
+<meta name="description" content="The full technical treatment — model setup, diagnostics, heterogeneity, robustness and open lines of criticism.">
+<link rel="icon" href="../../assets/icons/logo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<script defer src="../../js/script.js"></script>
+</head>
+<body>
+
+<div class="progress-rail" aria-hidden="true"><div class="progress-rail__fill"></div></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="30" height="30">
+          <rect width="64" height="64" rx="14" fill="var(--ink)"/>
+          <path d="M14 44 L26 30 L36 38 L50 20" stroke="var(--forest)" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="50" cy="20" r="3.4" fill="var(--brass)"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <strong>Perspective</strong>
+        <span>Economics &amp; Policy</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../opinions/index.html">Opinions</a>
+      <a href="../../research.html" aria-current="page">Research</a>
+      <a href="../../about.html">About</a>
+      <a href="../../contact.html">Contact</a>
+      <button class="theme-toggle" type="button" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.5 12H2M22 12h-2.5M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7" stroke-linecap="round"/></svg>
+        <span class="theme-toggle__label">Dark mode</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container-narrow article-header reveal is-visible">
+    <p class="eyebrow">03 — Advanced</p>
+    <h1>Spatial Clustering of Crime in South Yorkshire</h1>
+    <p style="color:var(--ink-soft); margin-top:14px; font-size:1.05rem;">The full technical treatment — model setup, diagnostics, heterogeneity, robustness and the case for and against the paper's conclusions.</p>
+    <div class="article-byline">
+      <span>Perspective</span><span>·</span><span>2026</span><span>·</span><span>12 min read</span>
+    </div>
+  </div>
+
+  <article class="container-narrow prose section reveal">
+    <h2>Model specification and the Spatial Durbin model</h2>
+    <p>
+      The Spatial Durbin Model sits at the top of the taxonomy here because it nests both the lag and error 
+      alternatives under testable restrictions. Setting the coefficient vector on the lagged covariates, θ, to 
+      zero collapses SDM back to SAR, and the paper tests that restriction directly with a likelihood ratio test 
+      rather than assuming it. What it doesn't test explicitly is the common factor restriction θ = −ρβ that would 
+      collapse SDM into SEM, so the case for lag over error rests more on the earlier LM battery and the offender 
+      mobility story than on a formal nested test against SEM. This matters because SDM coefficients on their own 
+      don't mean much. A covariate enters twice, once through its own area effect and once through its spatially 
+      lagged version, and the two interact through the (I − ρW)⁻¹ multiplier before you get anything resembling a 
+      marginal effect. There's also a structural circularity worth sitting with: crime in one LSOA is modelled as 
+      partly a function of crime in its neighbours, which are themselves partly a function of crime in the first 
+      LSOA. The model resolves this through matrix inversion rather than any causal ordering, which is standard 
+      practice, but it means ρ is doing double duty as both a spillover parameter and an implicit assumption about 
+      how quickly that inversion converges, since it requires ρ to stay below the inverse of the largest eigenvalue 
+      of W, something row standardisation conveniently guarantees.
+    </p>
+
+    <h2>Data, deprivation controls and the collinearity problem</h2>
+    <p>
+      The decision to use domain ranks rather than the composite IMD score is really about avoiding a mechanical 
+      form of endogeneity: the composite score already has a crime domain baked into it, so regressing crime on a 
+      variable that partly contains crime would inflate fit for reasons that have nothing to do with the underlying 
+      relationship. The collinearity problem that follows is more interesting than it first looks. Income, 
+      employment and education deprivation correlate at 0.93 to 0.96 with each other at LSOA level, which isn't 
+      surprising given how IMD domains are constructed, but averaging the three standardised domains into one index 
+      is a fairly blunt fix. It assumes each domain contributes equally to the underlying construct, an assumption 
+      that principal components analysis would relax by letting the data assign the weights, at the cost of losing 
+      the clean one standard deviation interpretation the paper relies on later. The tradeoff is stated plainly in 
+      the paper: the composite solves collinearity but destroys the ability to say which domain is driving the 
+      crime relationship. That's not a minor cost. If income deprivation and employment deprivation operate through
+       different mechanisms, material hardship against social exclusion, say, collapsing them into one index means 
+       the coefficient reported is some unknown weighted average of two potentially distinct channels, and there's 
+       no way to recover the individual domain effects from the composite specification alone.
+    </p>
+
+    <h2>Diagnostics: Moran's I, Lagrange Multiplier tests and model selection</h2>
+    <p>
+      Moran's I on its own can tell you spatial dependence exists but says nothing about its form, which is why the 
+      LM battery matters more than the headline test. The clever part of the Anselin decision rule is the robust 
+      versions of LM-lag and LM-error, which strip out the score contribution attributable to the other process 
+      before testing. Without that adjustment, a strong lag process will often make the error test look significant 
+      too, purely because the two null hypotheses share information under misspecification, and you end up unable 
+      to tell them apart. Here the robust LM-lag statistic clears its threshold while robust LM-error doesn't, 
+      which is the textbook signal to move toward a lag specification. Worth noting though: these tests are only 
+      powered to detect deviation toward SAR or SEM specifically, not toward SDM. The paper's later LR test 
+      comparing SDM against SAR is doing separate work, testing a different and more general alternative that the 
+      LM battery was never built to catch. Combining the two forms of evidence, the LM sequence pointing to lag 
+      over error and the LR test pointing to SDM over SAR, is a reasonable way to build the case, but it's worth 
+      being clear that these are two different testing frameworks answering two different questions rather than one 
+      continuous chain of logic.
+    </p>
+
+    <h2>Direct, indirect and total effects under SAR and SDM</h2>
+    <p>
+      The spatial multiplier (I − ρW)⁻¹ expands into I + ρW + ρ²W² and so on, so the indirect effect reported in 
+      the impacts table is the sum of influence propagating through second 
+      and third order neighbours, decaying geometrically with each step. In SDM this gets more complicated 
+      again because the indirect effect has two separate sources feeding into it: the θ coefficient on the 
+      spatially lagged covariate itself, and the ρ-driven feedback of the lagged dependent variable. 
+      The impacts table reports a single indirect number, but that number is a blend of two mechanistically 
+      different spillover channels, and there's no way to split the blend back into its parts from the summary 
+      table alone. The population density result makes this concrete. A negative direct effect paired with a 
+      positive indirect one under SDM isn't something a SAR model could ever produce, because SAR only has one 
+      channel for spillover. Seeing the sign flip between direct and indirect for density, and not for deprivation 
+      or tenure, is decent evidence that whatever process links density to crime spillover differs in structure 
+      from the other two covariates, operating through the covariate channel rather than the outcome channel. 
+      None of this comes from the raw coefficient table. You only see it once you run the simulation based 
+      inference needed to get standard errors on these nonlinear functions of the parameters, since the delta 
+      method gets awkward once ρ and θ start interacting inside a matrix inverse.
+    </p>
+
+    <h2>Spatial heterogeneity: regimes, GWR and influential observations</h2>
+    <p>
+      Holding ρ fixed across local authorities while letting the own area coefficients vary assumes the underlying spatial process, offenders and victims moving across 
+      physical boundaries, works the same way everywhere in the county even if the strength of the deprivation or 
+      tenure relationship differs locally. That's defensible given the theory in the paper, offender mobility 
+      doesn't know about council boundaries, and a model that 
+      let ρ vary too would be answering a different question. GWR is a local smoothing technique rather than a properly 
+      specified spatial econometric model: it doesn't 
+      address the endogeneity built into Wy, and local windows with only a few hundred observations can produce 
+      unstable coefficients purely from small sample noise, which is exactly why a permutation based Monte Carlo 
+      test on the variance of the local coefficients is used to check whether apparent local variation 
+      is systematic rather than random noise. The influence diagnostics raise a separate concern. The DFBETAS screening was run on the non-spatial 
+      OLS specification rather than the SDM, so strictly it identifies which LSOAs are influential for the 
+      non-spatial tenure relationship, not necessarily the spatial one. What makes the finding useful anyway 
+      is what happens when you remove the flagged LSOAs: residual autocorrelation reappears. That's a stronger 
+      piece of evidence than the DFBETAS score itself, since it shows those observations were doing work in 
+      the spatial structure rather than just being large residuals sitting on top of an otherwise fitting model.
+    </p>
+
+    <h2>Robustness to the spatial weights matrix</h2>
+    <p>
+      There's a foundational weak point in the entire SAR and SDM framework that the robustness section only 
+      partly addresses: W is treated as known and exogenous, chosen by the researcher rather than estimated from 
+      the data, and every downstream inference is conditional on that choice being correct. Testing across queen 
+      contiguity, rook contiguity, k = 5 nearest neighbours and inverse distance weighting is a sensible way to 
+      check whether the substantive results survive different definitions of adjacency, and here they mostly do, 
+      with the deprivation coefficient staying in a tight band across all four. But it's worth noticing that all 
+      four specifications are still geography based measures of physical closeness. None of them test a properly 
+      different theoretical channel, commuting patterns or road network distance, for instance, which would be a 
+      harder test of whether the offender mobility story holds up against a different notion of what makes two 
+      areas neighbours. The inverse distance case is the interesting outlier: residual autocorrelation persists 
+      there while it doesn't under the other three, and the likely explanation is that inverse distance weighting 
+      creates a much denser matrix, an average of ninety neighbours against five or six for the others, which 
+      dilutes local dependence with a lot of weak, long range connections that don't map onto any real mechanism 
+      of crime spillover.
+    </p>
+
+    <div class="index-rule" style="margin-top:36px;"></div>
+
+    <div class="cta-row" style="margin-top:10px;">
+      <a class="btn" href="paper.pdf" target="_blank" rel="noopener">Open the full PDF</a>
+      <a class="btn secondary" href="index.html">Back to paper page</a>
+      <a class="btn secondary" href="beginner.html">Start from Beginner</a>
+    </div>
+  </article>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:1px solid var(--line); padding-top:20px;">
+      <span>© 2026 Perspective</span>
+      <span>Spatial Clustering of Crime in South Yorkshire</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
