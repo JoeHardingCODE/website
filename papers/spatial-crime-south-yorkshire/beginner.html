@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beginner | Spatial Clustering of Crime in South Yorkshire</title>
+<meta name="description" content="A plain-language explanation of the paper — no economics or statistics background required.">
+<link rel="icon" href="../../assets/icons/logo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<script defer src="../../js/script.js"></script>
+</head>
+<body>
+
+<div class="progress-rail" aria-hidden="true"><div class="progress-rail__fill"></div></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="30" height="30">
+          <rect width="64" height="64" rx="14" fill="var(--ink)"/>
+          <path d="M14 44 L26 30 L36 38 L50 20" stroke="var(--forest)" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="50" cy="20" r="3.4" fill="var(--brass)"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <strong>Perspective</strong>
+        <span>Economics &amp; Policy</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../opinions/index.html">Opinions</a>
+      <a href="../../research.html" aria-current="page">Research</a>
+      <a href="../../about.html">About</a>
+      <a href="../../contact.html">Contact</a>
+      <button class="theme-toggle" type="button" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.5 12H2M22 12h-2.5M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7" stroke-linecap="round"/></svg>
+        <span class="theme-toggle__label">Dark mode</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container-narrow article-header reveal is-visible">
+    <p class="eyebrow">01 — Beginner</p>
+    <h1>Spatial Clustering of Crime in South Yorkshire</h1>
+    <p style="color:var(--ink-soft); margin-top:14px; font-size:1.05rem;">A plain-language explanation of the paper, written for readers with no background in economics or statistics.</p>
+    <div class="article-byline">
+      <span>Perspective</span><span>·</span><span>2026</span><span>·</span><span>5 min read</span>
+    </div>
+  </div>
+
+  <article class="container-narrow prose section reveal">
+    <h2>What this paper is about</h2>
+    <p>
+      Most of the UK studies of neighbourhood crime and deprivation rely on standard ordinary
+least squares (OLS) methodologies that implicitly assume spatial independence that we detail to
+be untenable. Spillover effects exists since crime is rarely distributed randomly across geographies
+since shared offender populations, activity patterns and displacement effects operate across
+Lower Layer Super Output Area (LSOA) borders. This paper aims to bridge that gap by asking
+whether crime rates in South Yorkshire are spatially clustered beyond what local deprivation
+and demographic composition would predict, and whether a spatial model changes substantive
+conclusions relative to naive OLS.
+    </p>
+
+    <h2>Why crime isn't spread out evenly</h2>
+    <p>
+      The literature review made this clear, crime is dependant on circumstance and circumstance varies across localities. This means that their is crime concentrations and is not uniformly distributed. 
+    </p>
+
+    <h2>What the paper did</h2>
+    <p>
+      This paper uses a series of spatial econometric models to try and quanitfy whether OLS is a good enough statistical technique to model crime rates with the South Yorkshire region. These models are taken from exisitng papers and applied to this dataset. These are the spatial error model, the spatial lag model and the spatial durbin model which are all slightly differeng ways of measuring data across geographies. 
+    </p>
+
+    <h2>What it found</h2>
+    <p>
+      It found that, for this dataset, the standard OLS methodology does not yeild the best fitting mdoel and therefore spatial models should be used in crime research. It also comments on the drivers of the crime. It presents an argument grounded in theory and then reienforced by the statistics that deprivation, housuing security and population density are all drivers of crime rates in South Yorkshire. These claims are less substantial and should be taken with a grain of salt, since there remains issues with the estimation with respect to these variables, but this was always secondary to the exploration of spatial measuring techniques.
+    </p>
+
+    <h2>Why it matters</h2>
+    <p>
+      This matters for policy analysis. If the govenment or local authority are looking for ways to reduce the crime rate they need both an accurate measurement technique and a targetted solution. If they were to use OLS in a policy analsis they would be dissapointed with the realised fall in the crime rate, and the intervention would appear to be a failure. If these were measured correctly then they would know what is truely expected from their policy. The coefficient estiamtes are also important as this give the magnitude. Policy makers are concerned with getting the maximum 'bang for their buck' so undergoing policy that brings the maximum return is in their interest. 
+    </p>
+
+    <div class="index-rule" style="margin-top:36px;"></div>
+
+    <div class="cta-row" style="margin-top:10px;">
+      <a class="btn" href="intermediate.html">Continue to Intermediate →</a>
+      <a class="btn secondary" href="paper.pdf" target="_blank" rel="noopener">Open PDF</a>
+      <a class="btn secondary" href="index.html">Back to paper page</a>
+    </div>
+  </article>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:1px solid var(--line); padding-top:20px;">
+      <span>© 2026 Perspective</span>
+      <span>Spatial Clustering of Crime in South Yorkshire</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
