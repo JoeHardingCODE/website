@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intermediate | Spatial Clustering of Crime in South Yorkshire</title>
+<meta name="description" content="A fuller discussion of mechanisms, method and trade-offs, still written to be readable.">
+<link rel="icon" href="../../assets/icons/logo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<script defer src="../../js/script.js"></script>
+</head>
+<body>
+
+<div class="progress-rail" aria-hidden="true"><div class="progress-rail__fill"></div></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="30" height="30">
+          <rect width="64" height="64" rx="14" fill="var(--ink)"/>
+          <path d="M14 44 L26 30 L36 38 L50 20" stroke="var(--forest)" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="50" cy="20" r="3.4" fill="var(--brass)"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <strong>Perspective</strong>
+        <span>Economics &amp; Policy</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../opinions/index.html">Opinions</a>
+      <a href="../../research.html" aria-current="page">Research</a>
+      <a href="../../about.html">About</a>
+      <a href="../../contact.html">Contact</a>
+      <button class="theme-toggle" type="button" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.5 12H2M22 12h-2.5M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7" stroke-linecap="round"/></svg>
+        <span class="theme-toggle__label">Dark mode</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container-narrow article-header reveal is-visible">
+    <p class="eyebrow">02 — Intermediate</p>
+    <h1>Spatial Clustering of Crime in South Yorkshire</h1>
+    <p style="color:var(--ink-soft); margin-top:14px; font-size:1.05rem;">A deeper explanation of the same paper, still written to be readable.</p>
+    <div class="article-byline">
+      <span>Perspective</span><span>·</span><span>2026</span><span>·</span><span>9 min read</span>
+    </div>
+  </div>
+
+  <article class="container-narrow prose section reveal">
+    <h2>Spatial dependence and why OLS falls short</h2>
+    <p>
+      The first challenge arises due to the fact that crime does not stay within their LSOA boundaries. 
+      Criminals roam, victims/targets group, and displacement effect from policing intensity results in the 
+      movement of criminal activity in to adjacent streets, 
+      which means that, when one regresses crime on deprivation and demographic factors while ignoring location, 
+      one assumes implicitly that errors in all LSOAs are not related to errors in neighboring LSOAs, 
+      which is most likely incorrect. 
+      This assumption is confirmed empirically in the paper: 
+      Global Moran's I equal to 0.406 for log crime rate reveals substantial clustering of crime rate and, 
+      more importantly for the OLS model critique, the residuals from the base model (which includes only crime rates as an independent variable) 
+      reveal autocorrelation even after adjustment for deprivation, density, and tenure. It is the second 
+      result that decreases OLS' credibility: it implies that spatial effects are not an artifact of missing deprivation variables, 
+      but persist even after control for them.
+    </p>
+
+    <h2>Choosing between a spatial lag and a spatial error model</h2>
+    <p>
+      Now that it's known that we need a spatial model, the remaining question is which mechanism should be modeled: 
+      does the crime rate in an LSOA influence the crime rate in the neighboring LSOAs (lag process), 
+      or is the source of correlation in the errors a combination of other, unobservable spatially clustered effects, 
+      such as policing density. Following Anselin's typical procedure, one can perform Lagrange Multiplier tests on 
+      the OLS residuals and check the robust versions after controlling for the other effect, and in the present case, 
+      both LM error and LM lag are significant, but only the latter is significant after accounting for error dependence, 
+      suggesting a lag process. A likelihood ratio test is used against the Spatial Durbin Model that nests the 
+      SAR model under the restriction that the lagged covariates sum up to zero. This restriction is soundly rejected, 
+      so the model selected is the SDM model rather than SAR, which is a reasonable model choice, though it should be 
+      noted that this is following LeSage and Pace's "general-to-specific" approach rather than LM testing sequence, 
+      which are not nested tests.
+    </p>
+
+    <h2>Direct, indirect and total effects</h2>
+    <p>
+      This is where the SAR/SDM apparatus proves itself. Given that the dependent variable influences itself through 
+      ρW, an increase in deprivation within a LSOA has not only an effect on its own crime rate but affects 
+      neighboring LSOAs, too, and then neighbors in return influence our LSOA. Hence, the value of β for the variable 
+      deprivation is not a marginal effect in any meaningful manner. The decomposition of the coefficient into three 
+      categories provided by LeSage and Pace, including direct, indirect and total effect, is the right interpretation 
+      for such coefficients. It is also a reasonable solution to the interpretational problem: because the deprivation 
+      index is a standardized index in which 1 SD equals approximately 9,000-10,000 national rank points, it measures 
+      the impact in terms of 100 rank points, resulting in an overall impact of 0.46% for both SAR and SDM. 
+      The private rents ratio prevails in percentage terms (an increase of 10pp translates into an increase of 
+      crime rates of 21-30%), whereas population density is by far the most informative outcome: while SAR reveals 
+      negative direct and indirect effects that reinforce each other, SDM separates the two and finds negative 
+      direct (−7.46%) and positive indirect (+5.98%) effects, which result in a fairly small insignificant effect. 
+      The difference between SAR and SDM with regard to the population density measure can be regarded as the main 
+      result of the study.
+    </p>
+
+    <h2>Does one equation fit all of South Yorkshire?</h2>
+    <p>
+      Having determined the significance of space, this paper wonders about whether one can use one equation for 
+      the four places (Sheffield, Barnsley, Doncaster, and Rotherham) to explain the relationships in question or 
+      whether there is a variation in such relationship across the areas. To this end, this paper performs such a 
+      comparison through a three-fold analysis. First, it uses the nested nested LR test by allowing the own-area 
+      and the lag coefficients (Regimes A and B respectively) to vary by local authority. None of the comparisons 
+      reject the pooled equation (all p > 0.25). However, AIC increases significantly as more regimes are allowed 
+      (up to 1017.9 as compared to 1000.0 for the pooled equation). Secondly, the geographically weighted regression 
+      approach shows better fit in general terms; 
+      however, permutation test (Monte Carlo) only detects non-stationarity of population density while deprivation 
+      barely misses and tenure does not feature at all. Thirdly, and this is the point of interest of this analysis, 
+      it emerges that three non-residential city-centre LSOAs (two in Sheffield and one in Doncaster) exert undue 
+      influence on the coefficient of tenure in particular. The dummy variable drops AIC considerably but reintroduces 
+      significant residual spatial autocorrelation that had previously been absorbed.
+    </p>
+
+    <h2>What the paper doesn't (yet) show</h2>
+    <p>
+      This is a cross-sectional and ecological study; no such study can draw inferences about individuals or
+causality, and the standard caution against the ecological fallacy applies. LSOAs are administrative
+units, so findings may depend on which areal unit is chosen. The denominator of residents is
+bound to inflate rates in some high-visitor LSOAs, which may account for the extreme skew in the
+untransformed dependent variable and for the density finding; an ambient population-adjusted rate,
+or sensitivity analysis that excludes the LSOA with the most extreme value, would be a natural
+follow up step for later research. Recorded crime is as much affected by practices of reporting and
+recording as it is by offending, and reporting rates are likely to vary depending on deprivation levels,
+something that the data cannot reveal. Pooling three IMD domains into a single composite solved
+the problem of collinearity but lost the information on the separate domains. The proportion of
+private rented dwellings does not differentiate between HMOs, student dwellings, short and long
+term lettings, each likely to have its own relationship with crime in the area. For instance the lowest
+ranking area, E01007862, and least deprived area is student accommodation that would fall under
+rented tenure. Assuming this to have the same relationship with crime is, as I see it, is a strong
+assumption that requires further testing. Future work should look towards establishing a causal
+relationship and making amends to the faults listed above. (As read in the paper)
+    </p>
+
+    <div class="index-rule" style="margin-top:36px;"></div>
+
+    <div class="cta-row" style="margin-top:10px;">
+      <a class="btn" href="advanced.html">Continue to Advanced →</a>
+      <a class="btn secondary" href="paper.pdf" target="_blank" rel="noopener">Open PDF</a>
+      <a class="btn secondary" href="index.html">Back to paper page</a>
+    </div>
+  </article>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:1px solid var(--line); padding-top:20px;">
+      <span>© 2026 Perspective</span>
+      <span>Spatial Clustering of Crime in South Yorkshire</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
