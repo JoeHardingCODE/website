@@ -60,7 +60,7 @@
         <p class="eyebrow" style="justify-content:center;">No posters yet</p>
         <p style="margin-top:10px;">
           Posters will appear here once published. To add one, drop the PDF into
-          <code>posters/files/</code> and add an entry to the <code>POSTERS</code> list
+          <code>posters/</code> and add an entry to the <code>POSTERS</code> list
           near the top of <code>posters/index.html</code>.
         </p>
       </div>
@@ -138,10 +138,10 @@
 
   /* =====================================================================
      POSTERS — add a new poster by adding an entry to this list.
-     1. Put the PDF file in posters/files/ (create the folder if needed).
+     1. Put the PDF file directly in posters/ (alongside this index.html).
      2. Add an object below with a unique "id", a "title", a short
         "description", a "tag" (category), a "date", and the "pdf" path
-        relative to this page (e.g. "files/my-poster.pdf").
+        relative to this page (e.g. "my-poster.pdf").
      Thumbnails are generated automatically from page 1 of each PDF —
      nothing else on this page needs to change.
      ===================================================================== */
@@ -152,10 +152,10 @@
       description: "PLease note this analysis uses data prior to the record high gilt yeilds of today, and such inference is contestable for the modern macroeconomic landscape.",
       tag: "Conference poster",
       date: "2026",
-      pdf: "files/SCM_Brexit.pdf"
+      pdf: "SCM_Brexit.pdf"
     }
     // Add more posters here in the same format. Drop each PDF into
-    // posters/files/ and give it a unique "id".
+    // posters/ and give it a unique "id".
   ];
 
   var THUMB_WIDTH = 700;   // render resolution used for the grid thumbnail
